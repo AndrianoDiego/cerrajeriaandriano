@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, flash, g 
+from flask import Flask, render_template, request, redirect, url_for, flash, g , session, abort
 from handlers import error_pages
 from flask_mysqldb import MySQL
 from flask import session
@@ -133,6 +133,10 @@ def usuarios():
     cur.execute('SELECT * FROM usuario')
     data = cur.fetchall()
     return render_template('usuarios.html', contacts = data)
+
+if __name__ == "main":
+    app.run("0.0.0.0",debug=False)
+    #app.run("0.0.0.0",debug=False)
 
 
 
